@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>CoreCalc</title>
+        <link rel="stylesheet" href="codsoft_calc.css">
+    </head>
+    <body>
+        <div class="calculator" id="calculators">
+        <div class="display">
+            <div class="inner-display">
+            <div id="history"></div>
+            <input type="text" id="dis" readonly>
+        </div>
+        </div>
+        <div class="buttons">
+            <button class="operator" onclick="clr()">C</button>
+            <button class="operator" onclick="addvalue('/')">/</button>
+            <button class="operator" onclick="addvalue('*')">&times;</button>
+            <button class="operator" onclick="lclr()">⌫</button>
+
+            <button onclick="addvalue('7')">7</button>
+            <button onclick="addvalue('8')">8</button>
+            <button onclick="addvalue('9')">9</button>
+            <button class="operator" onclick="addvalue('-')">-</button>
+
+            <button onclick="addvalue('4')">4</button>
+            <button onclick="addvalue('5')">5</button>
+            <button onclick="addvalue('6')">6</button>
+            <button class="operator" onclick="addvalue('+')">+</button>
+
+            <button onclick="addvalue('1')">1</button>
+            <button onclick="addvalue('2')">2</button>
+            <button onclick="addvalue('3')">3</button> 
+                       
+            
+            <button onclick="addvalue('.')">.</button>
+            <button onclick="addvalue('%')">%</button>
+            <button onclick="addvalue('0')">0</button>
+            
+            <button id="equal" onclick="calculate()">=</button>
+
+        </div>
+        </div>
+        <script>
+         function clr()
+         {
+            document.getElementById("dis").value="";
+            document.getElementById("history").innerText = "";
+         }
+         function addvalue(value)
+         {
+            document.getElementById("dis").value=document.getElementById("dis").value+value;
+         }
+         function lclr()
+         {
+            let display=document.getElementById("dis");
+           
+            display.value=display.value.slice(0,-1);
+         }
+         function calculate()
+         {
+           let display=document.getElementById("dis");
+           let history=document.getElementById("history");
+           try
+           {
+            history.innerText=display.value;
+            display.value=eval(display.value);
+           }
+           catch 
+           {
+             display.value="ERROR";
+           }
+        }
+        </script>
+    </body>
+</html>
